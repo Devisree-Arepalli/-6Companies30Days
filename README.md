@@ -9,7 +9,7 @@ Challenge duration: 1st January 2022 - 30th January 2022
 Day 1-5 Challenge
 Company Name : Goldman Sachs
 
-Questions :
+    QUESTIONS :::
 
 01.Given an array of strings, return all groups of strings that are anagrams.
 

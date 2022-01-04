@@ -32,7 +32,12 @@ public:
 // driver code
 int main()
 {
-    vector<int> num = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    int n=10,m=2;
+    vector<int> num(n*m);
+    for(int i=0;i<n*m;i++)
+        cin>>num[i];
+    //EX: vector<int> num = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    Solution s;
     Solution s;
     vector<int> res = s.Max10Numbers(num);
     for (auto &i : res)

@@ -1,0 +1,29 @@
+oid findSum(Node* root,int X,int s,int& ans)
+{
+    int sum=0;
+    if(!root)
+	return ;
+    findSum(root->left,X,s,ans);
+    findSum(root->right,X,s,ans);
+    if(root->left && root->right)
+        root->data += root->left->data + root->right->data;
+    else if(root->left)
+        root->data += root->left->data;
+    else if(root->right)
+        root->data += root->right->data;
+    
+    //check for condition
+    if(root->data == X)
+        ans++;
+}
+
+	 //return s;
+
+int countSubtreesWithSumX(Node* root, int X)
+{
+	// Code here
+	int s=0,ans=0;
+
+	findSum(root,X,0,ans);
+	return ans;
+}

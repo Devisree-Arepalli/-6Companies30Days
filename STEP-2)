@@ -1,0 +1,42 @@
+/*arr.length >= 3
+There exists some index i (0-indexed) with 0 < i < arr.length - 1 such that:
+arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
+arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
+Given an integer array arr, return the length of the longest subarray, which is a mountain. Return 0 if there is no mountain subarray.*/
+
+//CODE:-
+class Solution {
+public:
+    int longestMountain(vector<int>& arr) {
+        int n=arr.size();
+        int mx=0,count;
+        bool flag;
+        for(int i=1;i<n;i++){
+int j=i;
+count=1;
+flag=false;
+
+        //increasing sequence
+        while(j<n && arr[j]>arr[j-1]){
+            count++;
+            j++;
+        }
+        
+        //decreasing sequence
+        while(i!=j && j<n && arr[j]<arr[j-1]){
+            count++;
+            j++;
+            flag=true;
+        }
+        
+        //length is max or not
+        if(i!=j && flag && count>=3){
+            mx=max(mx,count);
+            j--;
+        }
+        
+        i=j;
+    }
+    return mx;
+}
+};

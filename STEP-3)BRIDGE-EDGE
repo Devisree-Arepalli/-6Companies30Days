@@ -1,0 +1,41 @@
+class Solution
+{
+	public:
+	void dfs(vector<bool>&visited,vector<int>adj[],int src)
+	{
+	    visited[src]=1;
+	    for(auto i:adj[src])
+	    {
+	        if(!visited[i])
+	          dfs(visited,adj,i);
+	    }
+	}
+    //Function to find if the given edge is a bridge in graph.
+    int isBridge(int V, vector<int> adj[], int c, int d) 
+    {
+        // Code here
+        int start=0,final=0;
+        vector<bool>visited(V,0);
+        for(int i=0;i<V;i++)
+        {
+            if(!visited[i]){
+            start++;
+            dfs(visited,adj,i);
+        }
+    }
+    for(int i=0;i<V;i++)
+      visited[i]=0;
+      
+    adj[c].erase(remove(adj[c].begin(),adj[c].end(),d),adj[c].end());
+    adj[d].erase(remove(adj[d].begin(),adj[d].end(),c),adj[d].end());
+     for(int i=0;i<V;i++)
+     {
+         if(!visited[i]){
+         final++;
+         dfs(visited,adj,i);
+     }
+     }
+     return(!(final==start));
+    }
+    
+    };

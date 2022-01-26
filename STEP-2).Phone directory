@@ -1,0 +1,26 @@
+class Solution{
+public:
+    vector<vector<string>> displayContacts(int n, string contact[], string s)
+    {
+        // code here
+        vector<vector<string>>ans(s.size());
+        set<string>mp;
+        
+        for(int i=0;i<n;i++)
+    {
+        mp.insert(contact[i]);
+    }
+    
+    for(int i=0;i<s.size();i++)
+    {
+        for(auto j:mp)
+        {
+            if(s.substr(0,i+1)==j.substr(0,i+1))
+             ans[i].push_back(j);
+        }
+        if(ans[i].size()==0)
+        ans[i].push_back(to_string(0));
+    }
+    return ans;
+    }
+     };

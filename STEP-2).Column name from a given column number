@@ -1,0 +1,21 @@
+class Solution{
+    public:
+    string colName (long long int n)
+    {
+        // your code here
+        string ans="";
+        //for(long long int i=1;i<=26;i++)
+        string res;
+       // int p=0,r=0;
+        while(n>0)
+        {
+            char ch='A'+(n-1)%26;
+            ans+=ch;
+            n=(n-1)/26;
+        }
+        for(int i=ans.length()-1;i>=0;i--)
+        res+=ans[i];
+        return (res);
+    }
+      
+      };

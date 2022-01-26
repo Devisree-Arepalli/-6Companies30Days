@@ -1,0 +1,47 @@
+class Solution {
+  public:
+    unordered_map<Node *, Node *> parent;
+    Node * tNode = NULL;
+    void dfs(Node * root,  int target, Node * par = NULL){
+        if(!root){
+            return;
+        }
+        if(root->data == target){
+            tNode = root;
+        }
+        if(par) parent[root] = par;
+        dfs(root->left, target, root);
+        dfs(root->right, target, root);
+    }
+  
+    int minTime(Node* root, int target) 
+    {
+        dfs(root, target);
+        unordered_map<Node *, bool> vis;
+        queue<pair<Node *, int>> q;
+        q.push({tNode, 0});
+        vis[tNode] = true;
+        int bestResult = 0;
+        while(!q.empty()){
+            auto t = q.front();
+            q.pop();
+            Node * temp = t.first;
+            int ti = t.second;
+            bestResult = max(bestResult, ti);
+            vis[temp] = true;
+            if(temp->left && vis.count(temp->left) == 0){
+                q.push({temp->left, ti + 1});
+                vis[temp->left] = true;
+            }
+            if(temp->right && vis.count(temp->right) == 0){
+                q.push({temp->right, ti + 1});
+                vis[temp->right ] =true;
+            }
+            if(parent[temp] && vis.count(parent[temp]) == 0){
+                q.push({parent[temp], ti + 1});
+                vis[parent[temp]] = true;
+            }
+        }
+        return bestResult;
+    }
+};

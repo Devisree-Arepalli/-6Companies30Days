@@ -1,0 +1,23 @@
+Q3)REMOVE COLOR PIECES
+
+
+class Solution {
+public:
+    bool winnerOfGame(string colors) {
+        int n=colors.size();
+        if(n<=2)
+            return false;
+        int s=0,e=n-1;
+        int a=0,b=0;
+        for(int i=1;i<n;i++)
+        {
+            if(colors[i]=='A' &&colors[i-1]=='A'&&colors[i+1]=='A')
+                a++;
+            if(colors[i]=='B'&&colors[i-1]=='B'&&colors[i+1]=='B')
+                b++;
+        }
+        if(a>b)
+            return true;
+        return false;
+    }
+};

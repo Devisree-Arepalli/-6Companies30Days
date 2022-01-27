@@ -1,0 +1,25 @@
+Q4)NO OF UNIQUE PATHS
+//CODE:-
+class Solution
+{
+    public:
+    //Function to find total number of unique paths.
+    int NumberOfPath(int a, int b)
+    {
+        //code here
+        int path[a][b];
+        for(int i=0;i<b;i++)
+        path[0][i]=1;
+        for(int i=0;i<a;i++)
+        path[i][0]=1;
+        
+    for(int i=1;i<a;i++)
+    {
+        for(int j=1;j<b;j++)
+        {
+            path[i][j]=path[i-1][j]+path[i][j-1];
+        }
+    }
+    return path[a-1][b-1];
+    }
+};

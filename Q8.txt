@@ -1,0 +1,9 @@
+Q8)MAXIMUM HEIGHT TREE
+
+class Solution{
+public:
+    int height(int N){
+        // code here
+       return (-1+sqrt(1+8*N))/2;
+    }
+};

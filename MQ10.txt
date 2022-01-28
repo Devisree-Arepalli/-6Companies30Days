@@ -1,0 +1,23 @@
+Q10)STICKLER THIEF
+class Solution
+{
+    public:
+    //Function to find the maximum money the thief can get.
+    int FindMaxSum(int p[], int n)
+    {
+        if(n==1)
+          return p[0] ;
+        
+        if(n==2)
+           return max(p[0],p[1]) ;
+           
+         p[2] = max(p[1] , p[0] + p[2]) ; 
+         
+        for(int i=3 ; i<n ; i++)
+        {
+            p[i] = max( {p[i-1] , p[i-2] + p[i] , p[i-3] + p[i]} ) ;
+        } 
+        return p[n-1] ;
+    
+    }
+};

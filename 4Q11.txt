@@ -1,0 +1,28 @@
+4q11)STRING AMMENDMENT
+class Solution{
+    public:
+    string amendSentence (string s)
+    {
+        // your code here
+        int n=s.size();
+        if(n==0)
+        return s;
+        string v;
+        int i=0;
+        while(i<n)
+        {
+            if(i==0 || isupper(s[i]))
+            v+=tolower(s[i]);
+            i++;
+            while(i<n && islower(s[i]))
+            {
+                v+=s[i];
+                i++;
+            }
+            v+=" ";
+        
+        }
+        v.pop_back();
+        return v;
+    }
+};
